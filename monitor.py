@@ -52,26 +52,18 @@ print("🚀 ========================================== 🚀")
 print("👀 Vigilando el servidor local cada 5 segundos... ⏱️\n")
 
 # Bandera para evitar que se cree un ticket infinitamente cada 5 segundos
-incidente_creado = False
+ticket_creado = False
 
 while True:
     try:
         response = requests.get("http://localhost:8000", timeout=3)
         if response.status_code == 200:
-            print(f"💚 [ESTADO OK] Servidor funcionando correctamente ✨ - ⏰ {datetime.now().strftime('%H:%M:%S')}")
-            # Si el servidor se recupera, reiniciamos la bandera para que pueda reportar futuras caídas
-            incidente_creado = False
-        else:
-            print(f"⚠️ [ADVERTENCIA] Código inusual: {response.status_code} 🔍")
-            if not incidente_creado:
-                crear_incidente()
-                incidente_creado = True
+            print(f"💚[ESTADO OK] Servidor funcionando correctamente ✨ - ⏰{datetime.now().strftime('%H:%M:%S')}")
+            ticket_creado = False  # Reinicia el estado para cuando vuelva a fallar
     except requests.exceptions.RequestException:
         print(f"🚨 [CRÍTICO] ¡SERVIDOR CAÍDO O SIN RESPUESTA! 💥 - ⏰ {datetime.now().strftime('%H:%M:%S')}")
-        if not incidente_creado:
+        if not ticket_creado:
             crear_incidente()
-            incidente_creado = True
-        else:
-            print("⏳ [INFO] El incidente ya fue reportado a Jira previamente. Esperando recuperación... 🔄")
+            ticket_creado = True  # Bloquea el envío de más tickets
             
     time.sleep(5)
