@@ -6,10 +6,10 @@ from datetime import datetime
 # ==========================================
 # ⚙️ CONFIGURA TUS DATOS DIRECTAMENTE AQUÍ ⚙️
 # ==========================================
-JIRA_URL = "https://barbosarep25.atlassian.net"
-JIRA_EMAIL = "barbosarep25@gmail.com"
+JIRA_URL = "https://tu-dominio.atlassian.net"
+JIRA_EMAIL = "tu-correo@gmail.com"
 JIRA_TOKEN = "TU_TOKEN_DE_JIRA"       # Coloca aquí tu token real de Jira
-PROJECT_KEY = "KAN"                  # Clave correcta de tu proyecto
+PROJECT_KEY = "TU_CLAVE"                  # Clave correcta de tu proyecto
 
 def crear_incidente():
     url = f"{JIRA_URL}/rest/api/3/issue"
