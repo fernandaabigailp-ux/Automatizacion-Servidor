@@ -6,10 +6,10 @@ from datetime import datetime
 # ==========================================
 # ⚙️ CONFIGURA TUS DATOS DIRECTAMENTE AQUÍ ⚙️
 # ==========================================
-JIRA_URL = "https://tu-dominio.atlassian.net"       # Cambia por tu URL real de Jira (sin barra al final)
-JIRA_EMAIL = "tu-correo@gmail.com"                # Cambia por tu correo de Atlassian
-JIRA_TOKEN = "TU_TOKEN_DE_JIRA"                   # Cambia por tu Token de API generado
-PROJECT_KEY = "SCRUM"                             # Clave de tu proyecto en Jira
+JIRA_URL = "https://barbosarep25.atlassian.net"
+JIRA_EMAIL = "barbosarep25@gmail.com"
+JIRA_TOKEN = "TU_TOKEN_DE_JIRA"       # Coloca aquí tu token real de Jira
+PROJECT_KEY = "KAN"                  # Clave correcta de tu proyecto
 
 def crear_incidente():
     url = f"{JIRA_URL}/rest/api/3/issue"
@@ -51,7 +51,6 @@ print("🛡️      MONITOREO ITIL INICIADO V2.0        🛡️")
 print("🚀 ========================================== 🚀")
 print("👀 Vigilando el servidor local cada 5 segundos... ⏱️\n")
 
-# Bandera para evitar que se cree un ticket infinitamente cada 5 segundos
 ticket_creado = False
 
 while True:
